@@ -8,7 +8,6 @@ import ModalFlow from './Modal/ModalFlow'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Navbar from 'react-bootstrap/Navbar'
 
 function App() {
   return (
