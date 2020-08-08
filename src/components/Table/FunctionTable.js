@@ -1,7 +1,8 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table'
 
 export const FunctionTable = ({ columns, rows, propertyAsKey }) => //Deconstructs your props
-<table className='table'>
+<Table striped bordered hover>
     <thead>
         <tr>{columns.map(col => <th key={`header-${col.heading}`}>{col.heading}</th>)}</tr>
     </thead>
@@ -12,4 +13,4 @@ export const FunctionTable = ({ columns, rows, propertyAsKey }) => //Deconstruct
             </tr>
         )}
     </tbody>
-</table>
+</Table>
