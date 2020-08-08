@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export const DataContext = React.createContext();
 
 const initialState = {
-
+    tableData:[]
 };
 
 export default class DataProvider extends Component {
@@ -13,10 +13,14 @@ export default class DataProvider extends Component {
 
         this.state = {
             ...initialState,
-            someApi: (param) => {
-
+            fetchTableData: () => {
+                return this.fetchTableData();
             }
         }
+    }
+
+    fetchTableData = () => {
+        
     }
 
     render() {
