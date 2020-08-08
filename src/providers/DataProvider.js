@@ -6,6 +6,10 @@ const initialState = {
     tableData:{
         columns: [],
         rows: []
+    },
+    table2Data:{
+        columns: [],
+        rows: []
     }
 };
 
@@ -24,14 +28,22 @@ export default class DataProvider extends Component {
 
     fetchTableData = () => {
         //Ideally get the data from Backend API using Axios
-        const columns = [{ heading: 'Name', property: 'name' }, { heading: 'Age', property: 'age' }, { heading: 'Sex', property: 'sex' }, { heading: 'Breed', property: 'breed' },]
-        const rows = [{ name: 'Sabrina', age: '6', sex: 'Female', breed: 'Staffordshire' }, { name: 'Max', age: '2', sex: 'Male', breed: 'Boxer' }]
+        const columns1 = [{ heading: 'Name', property: 'name' }, { heading: 'Age', property: 'age' }, { heading: 'Sex', property: 'sex' }, { heading: 'Breed', property: 'breed' },]
+        const rows1 = [{ name: 'Sabrina', age: '6', sex: 'Female', breed: 'Staffordshire' }, { name: 'Max', age: '2', sex: 'Male', breed: 'Boxer' }]
+        
+        const columns2 = [{ heading: 'Name', property: 'name' }, { heading: 'Age', property: 'age' }, { heading: 'Salary', property: 'salary' }]
+        const rows2 = [{ name: 'Sabrina', age: '6', salary: '455'}, { name: 'Max', age: '2', salary: '665'}]
+
         let newState = Object.assign({}, this.state);
         this.setState({
             ...newState,
             tableData: {
-                columns: columns,
-                rows: rows
+                columns: columns1,
+                rows: rows1
+            },
+            table2Data:{
+                columns: columns2,
+                rows: rows2
             }
         })
     }
