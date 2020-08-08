@@ -11,12 +11,14 @@ export default class ModalTable extends Component {
     constructor(props){
         super(props);
         this.state = {
+            abc : true,
             showHide : false
         } 
     }
 
     onRowSelected = (selectedRow) => {
-       console.log(selectedRow);
+        this.setState({ selectedRow : selectedRow })
+        console.log(selectedRow);
     }
 
     handleModalShowHide() {
@@ -44,6 +46,7 @@ export default class ModalTable extends Component {
                             rows={rows}
                             propertyAsKey='name'
                             rowSelected = {this.onRowSelected}
+                            radioGroupKey = 'tableGroup'
                             />
                     </Modal.Body>
                     
