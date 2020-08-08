@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Button, Modal } from 'react-bootstrap'
-import {FunctionTable} from '../Table/FunctionTable'
+import RTable from '../Table/RTable'
 
 export default class ModalTable extends Component {
+    
     componentDidMount () {
         this.props.dataContext.state.fetchTableData(); 
     }
@@ -34,11 +35,11 @@ export default class ModalTable extends Component {
                     </Modal.Header>
                     
                     <Modal.Body>
-                    <FunctionTable
-                        columns={columns}
-                        rows={rows}
-                        propertyAsKey='name' //The data property to be used as a key
-                        />
+                        <RTable
+                            columns={columns}
+                            rows={rows}
+                            propertyAsKey='name'
+                            />
                     </Modal.Body>
                     
                     <Modal.Footer>
