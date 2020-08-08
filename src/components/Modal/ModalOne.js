@@ -43,7 +43,7 @@ export default class ModalOne extends Component {
                      </Modal.Body>
                      
                      <Modal.Footer>
-                         <Button variant="primary" onClick={() => this.close()}>
+                         <Button variant="primary" onClick={() => this.close()}  disabled={!this.state.selectedRow}>
                              Select
                          </Button>
                      </Modal.Footer>
