@@ -15,6 +15,10 @@ export default class ModalTable extends Component {
         } 
     }
 
+    onRowSelected = (selectedRow) => {
+       console.log(selectedRow);
+    }
+
     handleModalShowHide() {
         this.setState({ showHide: !this.state.showHide })
     }
@@ -39,6 +43,7 @@ export default class ModalTable extends Component {
                             columns={columns}
                             rows={rows}
                             propertyAsKey='name'
+                            rowSelected = {this.onRowSelected}
                             />
                     </Modal.Body>
                     
