@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Table from 'react-bootstrap/Table'
-import Form from 'react-bootstrap/Form'
 
 export default class RTable extends Component {
 
