@@ -3,13 +3,19 @@ import logo from '../svgs/logo.svg';
 import './App.css';
 import BasicModalExample from './Modal/ModalExample.js';
 import DataProvider, { DataContext } from '../providers/DataProvider';
+import ModalTable from './Modal/ModalTable';
 
 function App() {
   return (
     <DataProvider >
-      <div className="App">
-        <BasicModalExample />
-      </div>
+      <DataContext.Consumer>
+        {(dataContext) => (
+          <div className="App">
+            <BasicModalExample />
+            <ModalTable dataContext = {dataContext} />
+        </div>
+        )}        
+      </DataContext.Consumer>
     </DataProvider>
   );
 }

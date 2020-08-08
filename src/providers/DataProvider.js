@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 export const DataContext = React.createContext();
 
 const initialState = {
-    tableData:[]
+    tableData:{
+        columns: [],
+        rows: []
+    }
 };
 
 export default class DataProvider extends Component {
@@ -26,7 +29,10 @@ export default class DataProvider extends Component {
         let newState = Object.assign({}, this.state);
         this.setState({
             ...newState,
-            tableData: {columns: columns, rows: rows}
+            tableData: {
+                columns: columns,
+                rows: rows
+            }
         })
     }
 
