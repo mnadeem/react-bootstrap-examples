@@ -16,17 +16,18 @@ export default class ModalFlow extends Component {
     onRowSelected = (selectedRow) => {
         console.log("ModalFlow");
         console.log(selectedRow);
-        this.setState({ showHideModal2: !this.state.showHideModal2})
+        this.setState({ showHideModal1: false, showHideModal2: true})
     }
 
     onRowSelected2 = (selectedRow) => {
         console.log("ModalFlow2");
         console.log(selectedRow);
+        this.setState({ showHideModal1: false, showHideModal2: false})
         
     }
 
     openModal= () => {
-        this.setState({ showHideModal1: !this.state.showHideModal1})
+        this.setState({ showHideModal1: true})
     }
 
     render () {

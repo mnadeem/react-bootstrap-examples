@@ -16,7 +16,7 @@ export default class ModalOne extends Component {
     }
 
     close = () => {
-        this.setState({ showHide: !this.state.showHide })
+        this.setState({ showHide: false })
         this.props.onClose(this.state.selectedRow);
     }
 
