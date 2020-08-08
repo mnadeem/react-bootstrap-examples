@@ -1,61 +1,48 @@
 import React, {Component} from 'react';
-import { Button, Modal } from 'react-bootstrap'
-import RTable from '../Table/RTable'
+import { Button } from 'react-bootstrap'
+import ModalOne from './ModalOne';
+import ModalTwo from './ModalTwo';
 
 export default class ModalFlow extends Component {
-    
-    componentDidMount () {
-        this.props.dataContext.state.fetchTableData(); 
-    }
 
     constructor(props){
         super(props);
         this.state = {
-            abc : true,
-            showHide : false
+            showHideModal1 : false,
+            showHideModal2 : false
         } 
     }
 
     onRowSelected = (selectedRow) => {
-        this.setState({ selectedRow : selectedRow })
+        console.log("ModalFlow");
         console.log(selectedRow);
+        this.setState({ showHideModal2: !this.state.showHideModal2})
     }
 
-    handleModalShowHide() {
-        this.setState({ showHide: !this.state.showHide })
-    }
-    
-    render() {
+    onRowSelected2 = (selectedRow) => {
+        console.log("ModalFlow2");
+        console.log(selectedRow);
         
-       const {columns, rows} = this.props.dataContext.state.tableData;
+    }
+
+    openModal= () => {
+        this.setState({ showHideModal1: !this.state.showHideModal1})
+    }
+
+    render () {
 
         return (
             <div>
-                <Button variant="primary" onClick={() => this.handleModalShowHide()}>
+                <Button variant="primary" onClick={() => this.openModal()}>
                     Launch Modal Flow
                 </Button>
-
-                <Modal show={this.state.showHide}>
-                    <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
-                        <Modal.Title>Modal Flow</Modal.Title>
-                    </Modal.Header>
-                    
-                    <Modal.Body>
-                        <RTable
-                            columns={columns}
-                            rows={rows}
-                            propertyAsKey='name'
-                            rowSelected = {this.onRowSelected}
-                            radioGroupKey = 'tableGroup'
-                            />
-                    </Modal.Body>
-                    
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
-                            Close
-                        </Button>                    
-                    </Modal.Footer>
-                </Modal>
+                { this.state.showHideModal1 &&
+                    <ModalOne dataContext= { this.props.dataContext} onClose={this.onRowSelected}/>
+                }
+                { this.state.showHideModal2 &&
+                    <ModalTwo dataContext= { this.props.dataContext} onClose={this.onRowSelected2}/>
+                }
+                
             </div>
         );
     }
