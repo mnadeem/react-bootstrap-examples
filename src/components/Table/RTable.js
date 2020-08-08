@@ -3,6 +3,19 @@ import Table from 'react-bootstrap/Table'
 
 export default class RTable extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            selectedRowIndex : -1
+        } 
+    }
+
+    onRowSelected = (row, index) => {
+        this.setState({ selectedRowIndex: index})
+        this.props.rowSelected(row);
+    }
+
+
     render() {
         const {columns, rows, propertyAsKey, radioGroupKey} = this.props;
 
@@ -18,10 +31,10 @@ export default class RTable extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {rows.map(item =>
-                        <tr key={`${item[propertyAsKey]}-row`}>
+                    {rows.map( (item, index) =>
+                        <tr key={`${item[propertyAsKey]}-row`}  onClick={() =>  this.onRowSelected(item, index)} >
                             {radioGroupKey &&
-                                <td><input name={radioGroupKey} type="radio" key={`${item[propertyAsKey]}-radio`} onClick={() => this.props.rowSelected(item)} /></td>
+                                <td><input checked={ this.state.selectedRowIndex === index }  value={index} name={radioGroupKey} type="radio" key={`${item[propertyAsKey]}-radio`} onClick={() => this.onRowSelected(item, index)} /></td>
                             }                          
 
                             {columns.map(col => <td key={`${item[propertyAsKey]}-${col.property}`}>{item[col.property]}</td>)}
