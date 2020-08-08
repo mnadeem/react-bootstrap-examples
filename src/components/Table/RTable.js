@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Table from 'react-bootstrap/Table'
+import Form from 'react-bootstrap/Form'
 
 export default class RTable extends Component {
 
@@ -34,9 +35,10 @@ export default class RTable extends Component {
                     {rows.map( (item, index) =>
                         <tr key={`${item[propertyAsKey]}-row`}  onClick={() =>  this.onRowSelected(item, index)} >
                             {radioGroupKey &&
-                                <td><input checked={ this.state.selectedRowIndex === index }  value={index} name={radioGroupKey} type="radio" key={`${item[propertyAsKey]}-radio`} onClick={() => this.onRowSelected(item, index)} /></td>
-                            }                          
-
+                                <td>
+                                    <input checked={ this.state.selectedRowIndex === index }  value={index} name={radioGroupKey} type="radio" key={`${item[propertyAsKey]}-radio`} onClick={() => this.onRowSelected(item, index)} />
+                                </td>
+                            }
                             {columns.map(col => <td key={`${item[propertyAsKey]}-${col.property}`}>{item[col.property]}</td>)}
                         </tr>
                     )}
