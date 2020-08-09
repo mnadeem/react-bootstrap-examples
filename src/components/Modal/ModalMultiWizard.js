@@ -13,7 +13,7 @@ export default class ModalMultiWizard extends Component {
   }
 
   onSubmit = () => {
-    this.setState({ showHide: false })
+    this.setState({ showHide: false, step1DataCaptured:false, step2DataCaptured:false, currentStep:1})
     
   };
 
