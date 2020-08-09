@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import TabExample from './Tab/TabExample'
 import Card from 'react-bootstrap/Card'
+import ModalMultiWizard from './Modal/ModalMultiWizard'
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
                 </Row>
                 <Row>
                   <Col> <ModalFlow dataContext= {dataContext} /></Col>
+                </Row>
+                <Row>
+                  <Col> <ModalMultiWizard dataContext= {dataContext} /></Col>
                 </Row>
               </Container>
             </Card.Body>
