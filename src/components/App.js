@@ -1,67 +1,74 @@
-import React from 'react';
-import logo from '../svgs/logo.svg';
-import './App.css';
-import BasicModalExample from './Modal/ModalExample.js';
-import DataProvider, { DataContext } from '../providers/DataProvider';
-import ModalTable from './Modal/ModalTable';
-import ModalFlow from './Modal/ModalFlow'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import TabExample from './Tab/TabExample'
-import Card from 'react-bootstrap/Card'
-import ModalMultiWizard from './Modal/ModalMultiWizard'
+import React from "react";
+import logo from "../svgs/logo.svg";
+import "./App.css";
+import BasicModalExample from "./Modal/ModalExample.js";
+import DataProvider, { DataContext } from "../providers/DataProvider";
+import ModalTable from "./Modal/ModalTable";
+import ModalFlow from "./Modal/ModalFlow";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import TabExample from "./Tab/TabExample";
+import Card from "react-bootstrap/Card";
+import ModalMultiWizard from "./Modal/ModalMultiWizard";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import ListGroup from "react-bootstrap/ListGroup";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from 'react-bootstrap/Nav'
 
 function App() {
   return (
-    <DataProvider >
+    <DataProvider>
       <DataContext.Consumer>
         {(dataContext) => (
           <div className="App">
-
-          <Card>
-            <Card.Header>Modals</Card.Header>
-            <Card.Body>
-              <Card.Title>Modal Examples</Card.Title>
-              <Card.Text>
-                With supporting text below as a natural lead-in to additional content.
-              </Card.Text>
-              <Container fluid>
-                <Row>
-                  <Col><BasicModalExample /></Col>
-                </Row>
-                <Row>
-                  <Col> <ModalTable dataContext = {dataContext} /></Col>
-                </Row>
-                <Row>
-                  <Col> <ModalFlow dataContext= {dataContext} /></Col>
-                </Row>
-                <Row>
-                  <Col> <ModalMultiWizard dataContext= {dataContext} /></Col>
-                </Row>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+              <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                  <Nav.Link href="#features">Features</Nav.Link>
+                  <Nav.Link href="#pricing">Pricing</Nav.Link>                  
+                </Nav>
+                <Nav>
+                  <Nav.Link href="#deets">More deets</Nav.Link>
+                  <Nav.Link eventKey={2} href="#memes">
+                    Dank memes
+                  </Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+            <Jumbotron fluid>
+              <Container>
+                <h1>Modal Window Examples</h1>
+                <p>
+                  <ListGroup>
+                    <ListGroup.Item>
+                      <BasicModalExample />
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <ModalTable dataContext={dataContext} />
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <ModalFlow dataContext={dataContext} />
+                    </ListGroup.Item>
+                    <ListGroup.Item variant="success">
+                      <ModalMultiWizard dataContext={dataContext} />
+                    </ListGroup.Item>
+                  </ListGroup>
+                </p>
               </Container>
-            </Card.Body>
-          </Card>
-
-          <Card>
-            <Card.Header>Cards</Card.Header>
-            <Card.Body>
-              <Card.Title>Cards Examples</Card.Title>
-              <Card.Text>
-                With supporting text below as a natural lead-in to additional content.
-              </Card.Text>
-              <Container fluid>
-               
-                <Row>
-                  <Col> <TabExample /></Col>
-                </Row>
+              <Container>
+                <h1>Tab Examples</h1>
+                <ListGroup>
+                  <ListGroup.Item>
+                    <TabExample />
+                  </ListGroup.Item>
+                </ListGroup>
               </Container>
-            </Card.Body>
-          </Card>
-         
-                      
-        </div>
-        )}        
+            </Jumbotron>         
+          </div>
+        )}
       </DataContext.Consumer>
     </DataProvider>
   );
