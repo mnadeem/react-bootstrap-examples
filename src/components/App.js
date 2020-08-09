@@ -8,6 +8,8 @@ import ModalFlow from './Modal/ModalFlow'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import TabExample from './Tab/TabExample'
+import Card from 'react-bootstrap/Card'
 
 function App() {
   return (
@@ -15,17 +17,45 @@ function App() {
       <DataContext.Consumer>
         {(dataContext) => (
           <div className="App">
-          <Container fluid>
-            <Row>
-              <Col> <BasicModalExample /></Col>
-            </Row>
-            <Row>
-              <Col> <ModalTable dataContext = {dataContext} /></Col>
-            </Row>
-            <Row>
-              <Col> <ModalFlow dataContext= {dataContext} /></Col>
-            </Row>
-          </Container>            
+
+          <Card>
+            <Card.Header>Modals</Card.Header>
+            <Card.Body>
+              <Card.Title>Modal Examples</Card.Title>
+              <Card.Text>
+                With supporting text below as a natural lead-in to additional content.
+              </Card.Text>
+              <Container fluid>
+                <Row>
+                  <Col><BasicModalExample /></Col>
+                </Row>
+                <Row>
+                  <Col> <ModalTable dataContext = {dataContext} /></Col>
+                </Row>
+                <Row>
+                  <Col> <ModalFlow dataContext= {dataContext} /></Col>
+                </Row>
+              </Container>
+            </Card.Body>
+          </Card>
+
+          <Card>
+            <Card.Header>Cards</Card.Header>
+            <Card.Body>
+              <Card.Title>Cards Examples</Card.Title>
+              <Card.Text>
+                With supporting text below as a natural lead-in to additional content.
+              </Card.Text>
+              <Container fluid>
+               
+                <Row>
+                  <Col> <TabExample /></Col>
+                </Row>
+              </Container>
+            </Card.Body>
+          </Card>
+         
+                      
         </div>
         )}        
       </DataContext.Consumer>
