@@ -12,26 +12,21 @@ export default class ModalMultiWizard extends Component {
     };
   }
 
-  // Trigger an alert on form submission
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { email, username, password } = this.state;
-    alert(`Your registration detail: \n 
-          Email: ${email} \n 
-          Username: ${username} \n
-          Password: ${password}`);
+  onSubmit = () => {
+    this.setState({ showHide: false })
+    
   };
 
-  onRowSelected = (selectedRow) => {
-    console.log("ModalFlow");
+  step1SelectedRow = (selectedRow) => {
+    console.log("Step 1 Row");
     console.log(selectedRow);
-    this.setState({ showHideModal1: false, showHideModal2: true });
+    this.setState({ step1DataCaptured: true })
   };
 
-  onRowSelected2 = (selectedRow) => {
-    console.log("ModalFlow2");
+  step2SelectedRow = (selectedRow) => {
+    console.log("Step 2 Row");
     console.log(selectedRow);
-    this.setState({ showHide: false, showHideModal2: false });
+    this.setState({ step2DataCaptured: true })
   };
 
   openModal = () => {
@@ -64,11 +59,11 @@ previousButton = () => {
     // If the current step is not 1, then render the "previous" button
     if(currentStep !==1){
       return (
-        <button 
+        <Button 
           className="btn btn-secondary" 
           type="button" onClick={this._prev}>
         Previous
-        </button>
+        </Button>
       )
     }
     return null;
@@ -79,11 +74,14 @@ previousButton = () => {
     // If the current step is not 3, then render the "next" button
     if(currentStep <2){
       return (
-        <button 
+        <Button 
           className="btn btn-primary float-right" 
-          type="button" onClick={this._next}>
+          type="button"
+          onClick={this._next}
+          disabled={!this.state.step1DataCaptured}
+          >
         Next
-        </button>        
+        </Button>        
       )
     } 
     return null;
@@ -100,7 +98,7 @@ previousButton = () => {
         </Button>
 
         <Modal show={this.state.showHide}>
-          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
+          <Modal.Header>
             <Modal.Title>Table Modal</Modal.Title>
           </Modal.Header>
 
@@ -111,10 +109,12 @@ previousButton = () => {
             <Step1
               currentStep={this.state.currentStep}
               dataContext= {this.props.dataContext}
+              step1SelectedRow = {this.step1SelectedRow}
             />
             <Step2
               currentStep={this.state.currentStep}
               dataContext= {this.props.dataContext}
+              step2SelectedRow = {this.step2SelectedRow}
             />
            
           </Modal.Body>
@@ -123,10 +123,11 @@ previousButton = () => {
           {previousButton}
           {nextButton}
             <Button
-              variant="secondary"
-              onClick={() => this.handleModalShowHide()}
+              variant="primary"
+              onClick={() => this.onSubmit()}
+              disabled={!this.state.step2DataCaptured}
             >
-              Close
+              Submit
             </Button>
           </Modal.Footer>
         </Modal>

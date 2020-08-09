@@ -12,6 +12,7 @@ export default class ModalOne extends Component {
 
   onRowSelected = (selectedRow) => {
     this.setState({ selectedRow: selectedRow });
+    this.props.step2SelectedRow(selectedRow);
   };
 
   render() {
