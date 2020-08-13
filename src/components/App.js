@@ -15,6 +15,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import ListGroup from "react-bootstrap/ListGroup";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from 'react-bootstrap/Nav'
+import PopupButton from './PopupButton/PopupButton';
 
 function App() {
   return (
@@ -54,6 +55,9 @@ function App() {
                     </ListGroup.Item>
                     <ListGroup.Item variant="success">
                       <ModalMultiWizard dataContext={dataContext} />
+                    </ListGroup.Item>
+                    <ListGroup.Item >
+                      <PopupButton dataContext={dataContext} />
                     </ListGroup.Item>
                   </ListGroup>
                 </p>
