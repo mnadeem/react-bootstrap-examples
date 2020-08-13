@@ -36,7 +36,7 @@ export default class PopupButton extends Component {
   };
 
   render() {
-    const { columns, rows } = this.props.dataContext.state.tableData;
+    const { columns, rows } = this.props.dataContext.state.tableAsyncData;
     return (
       <React.Fragment>
         <InputGroup className="mb-3">

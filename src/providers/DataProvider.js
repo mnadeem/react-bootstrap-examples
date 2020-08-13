@@ -76,12 +76,12 @@ export default class DataProvider extends Component {
       setTimeout(() => {
         const result = [
           {
-            name: "Sabrina",
+            name: "A Sabrina",
             age: "6",
             sex: "Female",
             breed: "Staffordshire",
           },
-          { name: "Max", age: "2", sex: "Male", breed: "Boxer" },
+          { name: "A Max", age: "2", sex: "Male", breed: "Boxer" },
         ];
         resolve(result);
       }, 100);
