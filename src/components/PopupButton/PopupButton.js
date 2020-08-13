@@ -20,6 +20,10 @@ export default class PopupButton extends Component {
 
   handleBlur = (e) => {
     console.log(e.target.value);
+    if (e.target.value.trim() === '') {
+        this.setState({ componentVal: '' });
+        this.setState({ tableDataFetched: false });
+    }
     if (this.state.componentVal !== e.target.value) {
         this.props.dataContext.state.fetchTableData(e.target.value);
         this.setState({ tableDataFetched: true });
