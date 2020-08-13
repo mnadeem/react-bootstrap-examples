@@ -11,6 +11,10 @@ const initialState = {
     columns: [],
     rows: [],
   },
+  tableAsyncData: {
+    columns: [],
+    rows: [],
+  },
 };
 
 export default class DataProvider extends Component {
