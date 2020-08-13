@@ -24,8 +24,9 @@ export default class PopupButton extends Component {
         this.setState({ componentVal: '' });
         this.setState({ tableDataFetched: false });
     } else if (this.state.componentVal !== e.target.value) {
-        this.props.dataContext.state.fetchTableData(e.target.value);
-        this.setState({ tableDataFetched: true });
+        this.props.dataContext.state.fetchAsyncTableData(e.target.value, () => {
+            this.setState({ tableDataFetched: true });
+        });       
     }
   };
 
