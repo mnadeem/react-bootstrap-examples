@@ -10,6 +10,7 @@ export default class PopupButton extends Component {
     this.state = {
       show: false,
       tableDataFetched: false,
+      componentVal:''
     };
   }
 
@@ -18,8 +19,11 @@ export default class PopupButton extends Component {
   }
 
   handleBlur = (e) => {
-    this.props.dataContext.state.fetchTableData();
-    this.setState({ tableDataFetched: true });
+    console.log(e.target.value);
+    if (this.state.componentVal !== e.target.value) {
+        this.props.dataContext.state.fetchTableData(e.target.value);
+        this.setState({ tableDataFetched: true });
+    }
   };
 
   onRowSelected = (selectedRow) => {
