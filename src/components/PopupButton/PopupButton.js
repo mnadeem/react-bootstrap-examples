@@ -9,6 +9,7 @@ export default class PopupButton extends Component {
     super();
     this.state = {
       show: false,
+      tableDataFetched: false,
     };
   }
 
@@ -18,6 +19,7 @@ export default class PopupButton extends Component {
 
   handleBlur = (e) => {
     this.props.dataContext.state.fetchTableData();
+    this.setState({ tableDataFetched: true });
   };
 
   onRowSelected = (selectedRow) => {
@@ -36,14 +38,16 @@ export default class PopupButton extends Component {
             aria-describedby="basic-addon2"
             onBlur={this.handleBlur}
           />
-          <InputGroup.Append>
-            <Button
-              variant="outline-secondary"
-              onClick={() => this.handleModalShowHide()}
-            >
-              Change
-            </Button>
-          </InputGroup.Append>
+          {this.state.tableDataFetched && (
+            <InputGroup.Append>
+              <Button
+                variant="outline-secondary"
+                onClick={() => this.handleModalShowHide()}
+              >
+                Change
+              </Button>
+            </InputGroup.Append>
+          )}
         </InputGroup>
         <Modal show={this.state.show}>
           <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
