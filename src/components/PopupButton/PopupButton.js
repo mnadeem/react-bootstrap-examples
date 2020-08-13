@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import { Button, Modal } from "react-bootstrap";
+import RTable from '../Table/RTable'
 
 export default class PopupButton extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -16,10 +18,11 @@ export default class PopupButton extends Component {
   }
 
   handleBlur = (e) => {
-    console.log(e);
+    this.props.dataContext.state.fetchTableData();
   };
 
   render() {
+    const {columns, rows} = this.props.dataContext.state.tableData;
     return (
       <React.Fragment>
         <InputGroup className="mb-3">
@@ -43,7 +46,16 @@ export default class PopupButton extends Component {
             <Modal.Title>Table Modal</Modal.Title>
           </Modal.Header>
 
-          <Modal.Body></Modal.Body>
+          <Modal.Body>
+          <RTable
+                columns={columns}
+                rows={rows}
+                propertyAsKey='name'
+                rowSelected = {this.onRowSelected}
+                radioGroupKey = 'tableGroup'
+                />
+
+          </Modal.Body>
 
           <Modal.Footer>
             <Button
