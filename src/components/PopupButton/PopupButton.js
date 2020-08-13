@@ -23,8 +23,7 @@ export default class PopupButton extends Component {
     if (e.target.value.trim() === '') {
         this.setState({ componentVal: '' });
         this.setState({ tableDataFetched: false });
-    }
-    if (this.state.componentVal !== e.target.value) {
+    } else if (this.state.componentVal !== e.target.value) {
         this.props.dataContext.state.fetchTableData(e.target.value);
         this.setState({ tableDataFetched: true });
     }
