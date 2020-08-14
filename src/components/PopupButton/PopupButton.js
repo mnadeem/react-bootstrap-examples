@@ -4,6 +4,7 @@ import FormControl from "react-bootstrap/FormControl";
 import { Button, Modal } from "react-bootstrap";
 import RTable from "../Table/RTable";
 
+const API_URI = process.env.REACT_APP_API_BASE_URI || '/api';
 export default class PopupButton extends Component {
   constructor() {
     super();
